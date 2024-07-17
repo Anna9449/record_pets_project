@@ -5,7 +5,9 @@ from drf_spectacular.utils import extend_schema, extend_schema_view
 from rest_framework import viewsets, mixins
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from django_filters.rest_framework import DjangoFilterBackend
 
+from .filters import PetFilter
 from .pagination import CustomPagination
 from .serializers import (PetSerializer, PetDeleteSerializer,
                           PetDeleteResponseSerializer, PetPhotoSerializer)
@@ -42,6 +44,8 @@ class PetViewSet(mixins.CreateModelMixin, mixins.ListModelMixin,
     """
     queryset = Pet.objects.prefetch_related('photos')
     pagination_class = CustomPagination
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = PetFilter
 
     def get_serializer_class(self):
         if self.action == 'destroy':

@@ -22,11 +22,13 @@ class PetSerializer(serializers.ModelSerializer):
     """
 
     photos = PetPhotoSerializer(many=True, read_only=True)
+    type = serializers.CharField(source='get_type_display', read_only=True)
+    type_name = serializers.CharField(source='type', write_only=True)
 
     class Meta:
         model = Pet
         fields = (
-            'id', 'name', 'age', 'type', 'photos', 'created_at'
+            'id', 'name', 'age', 'type', 'type_name', 'photos', 'created_at'
         )
 
 
