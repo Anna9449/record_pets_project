@@ -52,9 +52,7 @@ class PetPhoto(models.Model):
         related_name='photos',
         verbose_name='Питомец'
     )
-    photo = models.ImageField('Фото питомца',
-                              blank=True,
-                              null=True)
+    photo = models.ImageField('Фото питомца')
 
     class Meta:
         verbose_name = 'Фото'

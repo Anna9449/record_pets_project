@@ -11,26 +11,44 @@ from .filters import PetFilter
 from .pagination import CustomPagination
 from .serializers import (PetSerializer, PetDeleteSerializer,
                           PetDeleteResponseSerializer, PetPhotoSerializer)
+from .schema import response_400, response_401
 from pets.models import Pet
 
 
 @extend_schema_view(
     create=extend_schema(
         summary='api/pets/ создание записи о питомце',
-        description='Создание записи о питомце.'
+        description='Создание записи о питомце.',
+        responses={
+            201: PetSerializer,
+            400: response_400,
+            401: response_401
+        }
     ),
     list=extend_schema(
         summary='api/pets/ получение списка питомцев',
-        description='Получение списка питомцев.'
+        description='Получение списка питомцев.',
+        responses={
+            200: PetSerializer,
+            401: response_401
+        }
     ),
     destroy=extend_schema(
         summary='api/pets/ удаление записей о питомцах списком',
-        responses={204: PetDeleteResponseSerializer}
+        responses={
+            204: PetDeleteResponseSerializer,
+            400: response_400,
+            401: response_401
+        }
     ),
     photo=extend_schema(
         summary='api/pets/{id}/photo/ добавление фото питомца',
         methods=('POST',),
-        responses={201: PetPhotoSerializer}
+        responses={
+            201: PetPhotoSerializer,
+            400: response_400,
+            401: response_401
+        }
     )
 )
 class PetViewSet(mixins.CreateModelMixin, mixins.ListModelMixin,
