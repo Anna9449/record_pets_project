@@ -4,9 +4,18 @@ from django.contrib.auth.models import Group
 from .models import Pet, PetPhoto
 
 
+@admin.register(PetPhoto)
+class PetPhotoAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'pet'
+    )
+    search_fields = ('pet',)
+
+
 class PetPhotoInline(admin.TabularInline):
     model = PetPhoto
-    min_num = 1
+    extra = 1
 
 
 @admin.register(Pet)

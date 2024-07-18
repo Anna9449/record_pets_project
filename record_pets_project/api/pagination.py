@@ -12,3 +12,15 @@ class CustomPagination(pagination.LimitOffsetPagination):
             'count': self.count,
             'items': data
         })
+
+    def get_paginated_response_schema(self, schema):
+        return {
+            'type': 'object',
+            'properties': {
+                'count': {
+                    'type': 'integer',
+                    'example': 123,
+                },
+                'items': schema,
+            },
+        }
