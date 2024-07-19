@@ -22,7 +22,7 @@ https://github.com/Anna9449/record_pets_project.git
 ```
 cd record_pets_project
 ```
-```
+
 Создать файл .env и заполните его своими данными, пример:
 
 ```
