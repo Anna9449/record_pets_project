@@ -1,11 +1,14 @@
 from http import HTTPStatus
 
 from django.shortcuts import get_object_or_404
+from django_filters.rest_framework import DjangoFilterBackend
 from drf_spectacular.utils import extend_schema, extend_schema_view
-from rest_framework import viewsets, mixins
+from rest_framework import mixins, viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from django_filters.rest_framework import DjangoFilterBackend
+
+from PIL import Image
+
 
 from .filters import PetFilter
 from .pagination import CustomPagination
@@ -13,7 +16,6 @@ from .serializers import (PetSerializer, PetDeleteSerializer,
                           PetDeleteResponseSerializer, PetPhotoSerializer)
 from .schema import response_400, response_401
 from pets.models import Pet
-
 
 
 @extend_schema_view(
@@ -84,7 +86,7 @@ class PetViewSet(mixins.CreateModelMixin, mixins.ListModelMixin,
         id_list = request.data['ids']
         obj_list = Pet.objects.filter(id__in=id_list)
         for obj in obj_list:
-            id_list.remove(obj.id)
+            id_list.remove(str(obj.id))
         for index in range(len(id_list)):
             id_list[index] = {
                 'id': id_list[index],
