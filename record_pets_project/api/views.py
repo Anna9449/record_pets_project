@@ -15,6 +15,7 @@ from .schema import response_400, response_401
 from pets.models import Pet
 
 
+
 @extend_schema_view(
     create=extend_schema(
         summary='api/pets/ создание записи о питомце',
