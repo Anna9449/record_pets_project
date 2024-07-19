@@ -7,9 +7,6 @@ from rest_framework import mixins, viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
-from PIL import Image
-
-
 from .filters import PetFilter
 from .pagination import CustomPagination
 from .serializers import (PetSerializer, PetDeleteSerializer,
