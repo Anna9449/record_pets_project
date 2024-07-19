@@ -119,12 +119,13 @@ REST_FRAMEWORK = {
 
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 
-   # 'DEFAULT_PERMISSION_CLASSES': [
-   #     'rest_framework_api_key.permissions.HasAPIKey',
-   # ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'api.permissions.CustomHasAPIKey',
+    ],
 }
 
 API_KEY_CUSTOM_HEADER = 'HTTP_X_API_KEY'
+API_KEY = os.getenv('API_KEY')
 
 SPECTACULAR_SETTINGS = {
     'TITLE': 'Pets project API',

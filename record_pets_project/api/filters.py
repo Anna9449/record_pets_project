@@ -14,7 +14,7 @@ class PetFilter(FilterSet):
 
     class Meta:
         model = Pet
-        fields = ('photos',)
+        fields = ('has_photos',)
 
     def filter_has_photos(self, queryset, name, value):
         if value:
