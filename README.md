@@ -61,6 +61,12 @@ sudo docker compose -f docker-compose.yml exec backend python manage.py createsu
 sudo docker compose -f docker-compose.yml exec backend python manage.py collectstatic
 sudo docker compose -f docker-compose.yml exec backend cp -r /app/static/. /static/static/ 
 ```
+### Документация к API:
+
+Документация к API проекта доступна по ссылкам:
+
+- http://localhost:8000/api/schema/redoc/
+- http://localhost:8000/api/schema/swagger-ui/
 
 ### Автор
 [![name badge](https://img.shields.io/badge/Anna_Pestova-3776AB?logo=github&logoColor=white)](https://github.com/Anna9449)
