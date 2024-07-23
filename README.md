@@ -63,7 +63,7 @@ sudo docker compose -f docker-compose.yml exec backend cp -r /app/static/. /stat
 ```
 ### Документация к API:
 
-Документация к API проекта доступна по ссылкам:
+Документация к API проекта доступна после запуска проекта по ссылкам:
 
 - http://localhost:8000/api/schema/redoc/
 - http://localhost:8000/api/schema/swagger-ui/
